@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://pxrgs6h2kikk"]
+
+[ext_resource type="Texture2D" uid="uid://bl2ifxi32qv5a" path="res://white.png" id="1_xidw3"]
+
+[node name="tile" type="Sprite2D"]
+position = Vector2(33, 32)
+scale = Vector2(64, 64)
+texture = ExtResource("1_xidw3")
