@@ -1,5 +1,3 @@
-# Isles
+# Roguelike jam 6 project
 
-**Isles** is my little procedural generation test. It generates islands in the sea (or sky) based on a time-based seed using procedural generation.
-
-It runs on Godot 4 and is available to test on [itch.io](https://fizzydrinks.itch.io/procedural-generation-screensaver)
+This project is being made for the [Roguelike jam 6](https://itch.io/jam/roguelike-jam-6). [Isles](https://fizzydrinks.itch.io/procedural-generation-screensaver) was created from an early procedural generation test of this project.
