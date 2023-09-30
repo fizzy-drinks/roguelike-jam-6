@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cqexvs24d08xt"]
+
+[ext_resource type="PackedScene" uid="uid://pxrgs6h2kikk" path="res://tile.tscn" id="1_lyyna"]
+
+[node name="tower" type="Node2D"]
+
+[node name="tile" parent="." instance=ExtResource("1_lyyna")]
+modulate = Color(0.427451, 0.00392157, 0.752941, 1)
+position = Vector2(0, 0)
+scale = Vector2(24, 24)

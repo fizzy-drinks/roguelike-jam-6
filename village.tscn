@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b4qnxsbcrngd3"]
+
+[ext_resource type="PackedScene" uid="uid://cb37crbgke0w" path="res://dungeon.tscn" id="1_eejwa"]
+
+[node name="dungeon" instance=ExtResource("1_eejwa")]
+
+[node name="tile" parent="." index="0"]
+modulate = Color(1, 1, 1, 1)
