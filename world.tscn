@@ -8,6 +8,6 @@ script = ExtResource("1_3loam")
 
 [node name="terrain" type="Node2D" parent="."]
 
-[node name="tower" parent="." instance=ExtResource("2_oijll")]
+[node name="tower" parent="." groups=["strucutres"] instance=ExtResource("2_oijll")]
 
 [node name="Camera2D" type="Camera2D" parent="."]

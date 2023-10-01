@@ -1,9 +1,9 @@
 extends Node2D
+class_name World
 
 
-const TILE_SIZE = 64
-const STRUCTURE_MAX_DENSITY = 4
-const STRUCTURE_MAX_GEN_CHANCE = 0.5
+const TILE_SIZE = 32
+const STRUCTURE_MAX_GEN_CHANCE = 0.05
 const STRUCTURE_TYPES_WEIGHTED = {
 	0.75: preload("res://dungeon.tscn"),
 	1: preload("res://village.tscn")
@@ -13,7 +13,7 @@ const STRUCTURE_TYPES_WEIGHTED = {
 var structure_noise = FastNoiseLite.new()
 var terrain_noise = FastNoiseLite.new()
 var tiles = {}
-var structures = { 0: { 0: true } }
+var structures = {}
 var time: float = 0
 
 
@@ -24,11 +24,10 @@ var time: float = 0
 func _ready():
 	terrain_noise.noise_type = 3
 	terrain_noise.frequency = 0.07
-	terrain_noise.seed = Time.get_unix_time_from_system()
 	
-	structure_noise.noise_type = 5
-	structure_noise.frequency = 0.1
-	structure_noise.seed = Time.get_unix_time_from_system()
+	structure_noise.noise_type = 3
+	structure_noise.frequency = 1
+	structure_noise.domain_warp_frequency = 0.5
 
 	generate_tiles(Vector2(-10, -10), Vector2(10, 10))
 
@@ -73,30 +72,27 @@ func generate_or_update_tile(x: int, y: int):
 	
 	
 func generate_structures(x: int, y: int):
+	if x == 0 and y == 0:
+		return
+	
 	var structure_value = get_structure_value(x, y)
 	
 	if randf() >= structure_value * STRUCTURE_MAX_GEN_CHANCE:
 		return
-		
-	for checkx in range(x - STRUCTURE_MAX_DENSITY, x + STRUCTURE_MAX_DENSITY):
-		if not checkx in structures:
-			continue
-
-		for checky in range(y - STRUCTURE_MAX_DENSITY, y + STRUCTURE_MAX_DENSITY):
-			if not checky in structures[checkx]:
-				continue
-				
-			return
 
 	var structure_type = randf()
-	var structure: Node2D
+	var structure: Dungeon
 	for chance in STRUCTURE_TYPES_WEIGHTED.keys():
 		if structure_type < chance:
 			structure = STRUCTURE_TYPES_WEIGHTED[chance].instantiate()
 			break
 
+	if not structure:
+		return
+
 	add_child(structure)
 	structure.global_position = Vector2(x, y) * TILE_SIZE
+	structure.world = self
 	
 	if x not in structures:
 		structures[x] = {}

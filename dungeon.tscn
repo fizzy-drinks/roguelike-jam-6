@@ -1,10 +1,24 @@
-[gd_scene load_steps=2 format=3 uid="uid://cb37crbgke0w"]
+[gd_scene load_steps=4 format=3 uid="uid://cb37crbgke0w"]
 
+[ext_resource type="Script" path="res://dungeon.gd" id="1_exjoy"]
 [ext_resource type="PackedScene" uid="uid://pxrgs6h2kikk" path="res://tile.tscn" id="1_sbpel"]
 
-[node name="dungeon" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_srhj0"]
+radius = 23.0868
+
+[node name="dungeon" type="Node2D" groups=["structures", "targetable"]]
+script = ExtResource("1_exjoy")
+team = "enemy"
+max_hp = 100.0
 
 [node name="tile" parent="." instance=ExtResource("1_sbpel")]
 modulate = Color(0.435294, 0.180392, 0.0196078, 1)
 position = Vector2(0, 0)
 scale = Vector2(32, 32)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_srhj0")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
