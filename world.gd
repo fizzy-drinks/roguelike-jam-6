@@ -3,7 +3,7 @@ class_name World
 
 
 const TILE_SIZE = 32
-const STRUCTURE_MAX_GEN_CHANCE = 0.05
+const STRUCTURE_MAX_GEN_CHANCE = 0.025
 const STRUCTURE_TYPES_WEIGHTED = {
 	0.75: preload("res://dungeon.tscn"),
 	1: preload("res://village.tscn")

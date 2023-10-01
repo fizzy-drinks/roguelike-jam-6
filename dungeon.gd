@@ -7,7 +7,11 @@ class_name Dungeon
 @export var world: Node2D
 
 
-@onready var spawner = load("res://unit.tscn")
+@onready var spawner = [
+	load("res://soldier.tscn"),
+	load("res://soldier.tscn"),
+	load("res://guard.tscn")
+]
 @onready var spawn_cooldown: float = 0
 
 
@@ -19,7 +23,7 @@ func _process(delta):
 
 
 func spawn():
-	var new_unit: Unit = spawner.instantiate()
+	var new_unit: Unit = spawner.pick_random().instantiate()
 	new_unit.position = position + Vector2(randi_range(-1, 1), randi_range(-1, 1))
 	new_unit.source_structure = self
 	new_unit.team = team

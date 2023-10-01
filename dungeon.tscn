@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://cb37crbgke0w"]
+[gd_scene load_steps=5 format=3 uid="uid://cb37crbgke0w"]
 
 [ext_resource type="Script" path="res://dungeon.gd" id="1_exjoy"]
 [ext_resource type="PackedScene" uid="uid://pxrgs6h2kikk" path="res://tile.tscn" id="1_sbpel"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_srhj0"]
-radius = 23.0868
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mirvq"]
+size = Vector2(34, 34)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1mf76"]
+radius = 61.0082
 
 [node name="dungeon" type="Node2D" groups=["structures", "targetable"]]
 modulate = Color(0.431373, 0.243137, 0.054902, 1)
@@ -16,9 +19,14 @@ max_hp = 100.0
 position = Vector2(0, 0)
 scale = Vector2(32, 32)
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." groups=["solid"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_srhj0")
+shape = SubResource("RectangleShape2D_mirvq")
+
+[node name="guard_range" type="Area2D" parent="."]
+
+[node name="shape" type="CollisionShape2D" parent="guard_range"]
+shape = SubResource("CircleShape2D_1mf76")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
