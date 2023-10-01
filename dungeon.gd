@@ -9,7 +9,6 @@ class_name Dungeon
 
 @onready var spawner = [
 	load("res://soldier.tscn"),
-	load("res://soldier.tscn"),
 	load("res://guard.tscn")
 ]
 @onready var spawn_cooldown: float = 0

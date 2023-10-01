@@ -56,6 +56,9 @@ func attack_unit(unit: Damageable):
 
 
 func pick_walk_target():
+	if not weakref(guard_area).get_ref():
+		return
+		
 	var area: CollisionShape2D = guard_area.get_node("shape")
 	var shape: CircleShape2D = area.shape
 	var c: Vector2 = area.global_position
@@ -66,10 +69,6 @@ func pick_walk_target():
 	walk_target_interest = 5
 	
 
-func target_enemies(area: Area2D):
-	for target in targets:
-		if not weakref(target).get_ref():
-			targets.remove_at(targets.find(target))
-	
+func target_enemies(area: Area2D):	
 	if area.owner is Unit and area.owner.team != team:
 		targets.append(area.owner)

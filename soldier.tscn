@@ -12,7 +12,8 @@ position = Vector2(25, 16)
 script = ExtResource("2_nrbxm")
 max_ms = 16.0
 min_ms = 4.0
-dps = 5.0
+dps = 7.0
+max_hp = 7.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(4, 4)

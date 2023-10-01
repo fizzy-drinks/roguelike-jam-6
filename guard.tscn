@@ -10,9 +10,9 @@ radius = 4.0
 [node name="guard" type="Node2D" groups=["targetable"]]
 position = Vector2(25, 16)
 script = ExtResource("2_k23lp")
-max_ms = 16.0
-min_ms = 4.0
-dps = 4.0
+max_ms = 20.0
+min_ms = 10.0
+dps = 3.0
 max_hp = 12.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
