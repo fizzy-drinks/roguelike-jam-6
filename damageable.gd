@@ -2,11 +2,17 @@ extends Node2D
 class_name Damageable
 
 
-@export var max_hp: float = 0
+@export var max_hp: float = 5
 
 
 @onready var label = load("res://damage_label.tscn")
-@onready var hp: float = max_hp
+
+
+var hp: float = max_hp
+
+
+func _ready():
+	hp = max_hp
 
 
 func damage(value: float):

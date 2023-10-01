@@ -20,7 +20,7 @@ func _process(delta):
 
 func spawn():
 	var new_unit: Unit = spawner.instantiate()
-	new_unit.position = position
+	new_unit.position = position + Vector2(randi_range(-1, 1), randi_range(-1, 1))
 	new_unit.source_structure = self
 	new_unit.team = team
 	new_unit.world = world

@@ -20,7 +20,7 @@ var attack_cooldown: float = 0
 
 
 func _ready():
-	sprite.modulate = source_structure.get_node("tile").modulate
+	sprite.modulate = source_structure.modulate
 	
 	
 func _process(delta):
@@ -80,5 +80,5 @@ func _on_area_2d_area_entered(area: Area2D):
 		attack_unit(area.owner)
 
 
-func _on_area_2d_area_exited(area):
+func _on_area_2d_area_exited(_area):
 	collision = null
