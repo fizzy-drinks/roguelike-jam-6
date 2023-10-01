@@ -13,7 +13,7 @@ jobs:
         channel:
           - webgl
         template:
-          - rolling
+          - rolling.zip
     name: Deploy - Itch.io ${{ matrix.template }}
     steps:
       - uses: KikimoraGames/itch-publish@v0.0.3
