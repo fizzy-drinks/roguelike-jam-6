@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bixsa4u2xixab"]
 
-[ext_resource type="Script" path="res://selfdestruct.gd" id="1_fpaws"]
+[ext_resource type="Script" path="res://selfdestruct.gd" id="1_cjffq"]
 
 [node name="damage_label" type="RichTextLabel"]
 offset_right = 45.0
@@ -9,4 +9,4 @@ theme_override_colors/default_color = Color(0.811765, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 12
 text = "5"
 autowrap_mode = 0
-script = ExtResource("1_fpaws")
+script = ExtResource("1_cjffq")

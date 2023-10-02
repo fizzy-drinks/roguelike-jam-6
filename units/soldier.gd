@@ -1,8 +1,7 @@
-extends "res://unit.gd"
+extends "res://units/unit.gd"
 
 
 var target: Node2D
-var attack_cooldown: float = 0
 
 
 func _process(delta):
@@ -45,8 +44,3 @@ func pick_target():
 			nearest = t
 	
 	target = nearest
-	
-	
-func attack_unit(unit: Damageable):
-	attack_cooldown = 1
-	unit.damage(dps)

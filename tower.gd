@@ -1,10 +1,10 @@
 extends Node2D
 
 
-@export var world: World
+@export var world: Node2D
 
 
-@onready var dungeon: Dungeon = $dungeon
+@onready var dungeon: Node2D = $dungeon
 
 
 func _ready():

@@ -8,8 +8,8 @@ class_name Dungeon
 
 
 @onready var spawner = [
-	load("res://soldier.tscn"),
-	load("res://guard.tscn")
+	load("res://units/soldier.tscn"),
+	load("res://units/guard.tscn")
 ]
 @onready var spawn_cooldown: float = 0
 
@@ -22,7 +22,7 @@ func _process(delta):
 
 
 func spawn():
-	var new_unit: Unit = spawner.pick_random().instantiate()
+	var new_unit: Node2D = spawner.pick_random().instantiate()
 	new_unit.position = position + Vector2(randi_range(-1, 1), randi_range(-1, 1))
 	new_unit.source_structure = self
 	new_unit.team = team
@@ -32,5 +32,5 @@ func spawn():
 
 
 func _on_area_2d_area_entered(area):
-	if area.owner is Unit and area.owner.team != team:
+	if "team" in area.owner and area.owner.team != team:
 		area.owner.damage(100)

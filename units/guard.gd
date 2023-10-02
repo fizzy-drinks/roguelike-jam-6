@@ -1,10 +1,9 @@
-extends "res://unit.gd"
+extends "res://units/unit.gd"
 
 
 var targets: Array[Unit]
 var walk_target: Vector2
 var walk_target_interest: float = 5
-var attack_cooldown: float = 0
 
 
 @onready var guard_area: Area2D = source_structure.get_node("guard_range")
@@ -48,11 +47,6 @@ func _physics_process(delta):
 			pick_walk_target()
 		
 		walk_toward(walk_target, delta)
-
-	
-func attack_unit(unit: Damageable):
-	attack_cooldown = 1
-	unit.damage(dps)
 
 
 func pick_walk_target():

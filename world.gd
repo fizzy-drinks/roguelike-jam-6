@@ -16,8 +16,8 @@ var time: float = 0
 @onready var tile_scene = load("res://tile.tscn")
 @onready var terrain = $terrain
 @onready var structure_types_weighted = {
-	0.75: load("res://dungeon.tscn"),
-	1: load("res://village.tscn")
+	0.75: load("res://structures/dungeon.tscn"),
+	1: load("res://structures/village.tscn")
 }
 
 
@@ -53,7 +53,7 @@ func generate_or_update_tile(x: int, y: int):
 	var terrain_value = get_terrain_value(x, y)
 	var green = 0.2 + terrain_value * 0.6
 	var red = terrain_value * green
-	var color = Color(red, green, 0)
+	var color = Color(red, green, red)
 
 	if x not in tiles:
 		tiles[x] = {}
@@ -81,7 +81,7 @@ func generate_structures(x: int, y: int):
 		return
 
 	var structure_type = randf()
-	var structure: Dungeon
+	var structure: Node2D
 	for chance in structure_types_weighted.keys():
 		if structure_type < chance:
 			structure = structure_types_weighted[chance].instantiate()

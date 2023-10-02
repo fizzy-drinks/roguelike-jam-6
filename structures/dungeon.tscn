@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cb37crbgke0w"]
 
-[ext_resource type="Script" path="res://dungeon.gd" id="1_exjoy"]
-[ext_resource type="PackedScene" uid="uid://pxrgs6h2kikk" path="res://tile.tscn" id="1_sbpel"]
+[ext_resource type="Script" path="res://structures/dungeon.gd" id="1_i5fm8"]
+[ext_resource type="PackedScene" uid="uid://pxrgs6h2kikk" path="res://tile.tscn" id="2_740dd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mirvq"]
 size = Vector2(34, 34)
@@ -10,12 +10,12 @@ size = Vector2(34, 34)
 radius = 61.0082
 
 [node name="dungeon" type="Node2D" groups=["structures", "targetable"]]
-modulate = Color(0.431373, 0.243137, 0.054902, 1)
-script = ExtResource("1_exjoy")
+modulate = Color(0.439216, 0.137255, 0.0588235, 1)
+script = ExtResource("1_i5fm8")
 team = "enemy"
 max_hp = 100.0
 
-[node name="tile" parent="." instance=ExtResource("1_sbpel")]
+[node name="tile" parent="." instance=ExtResource("2_740dd")]
 position = Vector2(0, 0)
 scale = Vector2(32, 32)
 

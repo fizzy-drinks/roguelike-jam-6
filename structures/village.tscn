@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b3n880p62x6in"]
+
+[ext_resource type="PackedScene" uid="uid://cb37crbgke0w" path="res://structures/dungeon.tscn" id="1_jv0bd"]
+
+[node name="village" instance=ExtResource("1_jv0bd")]
+modulate = Color(0.737255, 0.576471, 0.301961, 1)

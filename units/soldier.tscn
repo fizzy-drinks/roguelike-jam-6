@@ -1,15 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://cdtyerf1dd78n"]
+[gd_scene load_steps=5 format=3 uid="uid://cxs8wcoufydke"]
 
-[ext_resource type="Texture2D" uid="uid://bl2ifxi32qv5a" path="res://white.png" id="2_krfq8"]
-[ext_resource type="Script" path="res://soldier.gd" id="2_nrbxm"]
-[ext_resource type="PackedScene" uid="uid://pxrgs6h2kikk" path="res://tile.tscn" id="3_3oi32"]
+[ext_resource type="Script" path="res://units/soldier.gd" id="1_pu8gf"]
+[ext_resource type="Texture2D" uid="uid://bl2ifxi32qv5a" path="res://white.png" id="2_5y7q0"]
+[ext_resource type="PackedScene" uid="uid://pxrgs6h2kikk" path="res://tile.tscn" id="3_v01sb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_m7jb6"]
 radius = 4.0
 
 [node name="soldier" type="Node2D" groups=["targetable"]]
 position = Vector2(25, 16)
-script = ExtResource("2_nrbxm")
+script = ExtResource("1_pu8gf")
+team = null
 max_ms = 16.0
 min_ms = 4.0
 dps = 7.0
@@ -17,14 +18,14 @@ max_hp = 7.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(4, 4)
-texture = ExtResource("2_krfq8")
+texture = ExtResource("2_5y7q0")
 
 [node name="Area2D" type="Area2D" parent="." groups=["solid"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_m7jb6")
 
-[node name="job_indicator" parent="." instance=ExtResource("3_3oi32")]
+[node name="job_indicator" parent="." instance=ExtResource("3_v01sb")]
 modulate = Color(0.65098, 0, 0, 1)
 position = Vector2(4, -5)
 scale = Vector2(2, 2)

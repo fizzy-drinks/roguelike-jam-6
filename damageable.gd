@@ -5,7 +5,7 @@ class_name Damageable
 @export var max_hp: float = 5
 
 
-@onready var label = load("res://damage_label.tscn")
+@onready var label = load("res://labels/damage_label.tscn")
 
 
 var hp: float = max_hp
