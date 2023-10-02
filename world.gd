@@ -4,10 +4,6 @@ class_name World
 
 const TILE_SIZE = 32
 const STRUCTURE_MAX_GEN_CHANCE = 0.025
-const STRUCTURE_TYPES_WEIGHTED = {
-	0.75: preload("res://dungeon.tscn"),
-	1: preload("res://village.tscn")
-}
 
 
 var structure_noise = FastNoiseLite.new()
@@ -19,6 +15,10 @@ var time: float = 0
 
 @onready var tile_scene = load("res://tile.tscn")
 @onready var terrain = $terrain
+@onready var structure_types_weighted = {
+	0.75: load("res://dungeon.tscn"),
+	1: load("res://village.tscn")
+}
 
 
 func _ready():
@@ -82,9 +82,9 @@ func generate_structures(x: int, y: int):
 
 	var structure_type = randf()
 	var structure: Dungeon
-	for chance in STRUCTURE_TYPES_WEIGHTED.keys():
+	for chance in structure_types_weighted.keys():
 		if structure_type < chance:
-			structure = STRUCTURE_TYPES_WEIGHTED[chance].instantiate()
+			structure = structure_types_weighted[chance].instantiate()
 			break
 
 	if not structure:
