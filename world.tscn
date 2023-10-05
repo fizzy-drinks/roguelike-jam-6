@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bwkacousqwcab"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_3loam"]
-[ext_resource type="PackedScene" uid="uid://cqexvs24d08xt" path="res://tower.tscn" id="2_oijll"]
+[ext_resource type="PackedScene" uid="uid://cqexvs24d08xt" path="res://structures/tower.tscn" id="2_oijll"]
 
 [node name="world" type="Node2D"]
 script = ExtResource("1_3loam")

@@ -16,6 +16,7 @@ func _ready():
 
 
 func damage(value: float):
+	print(self, " taking ", value, " damage")
 	var t: RichTextLabel = label.instantiate()
 	get_tree().current_scene.add_child(t)
 	t.clear()

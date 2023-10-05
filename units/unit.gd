@@ -4,7 +4,6 @@ class_name Unit
 
 @export var team: String
 @export var source_structure: Node2D
-@export var world: World
 @export var max_ms: float
 @export var min_ms: float
 @export var dps: float
@@ -47,15 +46,13 @@ func _on_area_2d_area_exited(area):
 func walk_toward(point: Vector2, delta: float):
 	var walk_target_delta = point - global_position
 
-	var tile_size = world.TILE_SIZE
-	var terrain_value = world.get_terrain_value(round(global_position.x / tile_size), round(global_position.y / tile_size))
+	var tile_size = Global.TILE_SIZE
+	var terrain_value = Global.get_terrain_value(round(global_position.x / tile_size), round(global_position.y / tile_size))
 	var ms_multiplier = min_ms + ((max_ms - min_ms) * terrain_value)
 	var movement = walk_target_delta.normalized() * ms_multiplier * delta
 	
-	if walk_target_delta.length() < movement.length():
-		return
-	
-	global_position += movement
+	if walk_target_delta.length() >= movement.length():
+		global_position += movement
 	
 	
 func attack_unit(unit: Damageable):

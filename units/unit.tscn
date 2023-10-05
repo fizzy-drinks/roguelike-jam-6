@@ -7,7 +7,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_m7jb6"]
 radius = 4.0
 
-[node name="unit" type="Node2D" groups=["targetable"]]
+[node name="unit" type="Node2D" groups=["targetable", "unit"]]
 position = Vector2(25, 16)
 script = ExtResource("1_t07ck")
 max_ms = 16.0

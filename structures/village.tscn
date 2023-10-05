@@ -1,6 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://b3n880p62x6in"]
+[gd_scene load_steps=4 format=3 uid="uid://xrbeipbtv24s"]
 
-[ext_resource type="PackedScene" uid="uid://cb37crbgke0w" path="res://structures/dungeon.tscn" id="1_jv0bd"]
+[ext_resource type="PackedScene" uid="uid://cb37crbgke0w" path="res://structures/structure.tscn" id="1_2yfs7"]
+[ext_resource type="PackedScene" uid="uid://b5opv2os51md6" path="res://structures/spawners/spawner.tscn" id="2_6pp78"]
+[ext_resource type="PackedScene" uid="uid://cjnv328djgd6l" path="res://units/guard.tscn" id="2_16piy"]
 
-[node name="village" instance=ExtResource("1_jv0bd")]
-modulate = Color(0.737255, 0.576471, 0.301961, 1)
+[node name="village" instance=ExtResource("1_2yfs7")]
+modulate = Color(0.937255, 0.658824, 0.870588, 1)
+
+[node name="Spawner" parent="spawners" index="0" instance=ExtResource("2_6pp78")]
+unit = ExtResource("2_16piy")
+spawn_rate = 7.0
+
+[node name="Spawner2" parent="spawners" index="1" instance=ExtResource("2_6pp78")]
+unit = ExtResource("2_16piy")
+spawn_rate = 7.0

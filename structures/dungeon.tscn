@@ -1,32 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cb37crbgke0w"]
+[gd_scene load_steps=4 format=3 uid="uid://crjpescexi706"]
 
-[ext_resource type="Script" path="res://structures/dungeon.gd" id="1_i5fm8"]
-[ext_resource type="PackedScene" uid="uid://pxrgs6h2kikk" path="res://tile.tscn" id="2_740dd"]
+[ext_resource type="PackedScene" uid="uid://cb37crbgke0w" path="res://structures/structure.tscn" id="1_x3sr4"]
+[ext_resource type="PackedScene" uid="uid://b5opv2os51md6" path="res://structures/spawners/spawner.tscn" id="3_kq41h"]
+[ext_resource type="PackedScene" uid="uid://cxs8wcoufydke" path="res://units/soldier.tscn" id="4_o7tv6"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mirvq"]
-size = Vector2(34, 34)
+[node name="dungeon" instance=ExtResource("1_x3sr4")]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_1mf76"]
-radius = 61.0082
-
-[node name="dungeon" type="Node2D" groups=["structures", "targetable"]]
-modulate = Color(0.439216, 0.137255, 0.0588235, 1)
-script = ExtResource("1_i5fm8")
-team = "enemy"
-max_hp = 100.0
-
-[node name="tile" parent="." instance=ExtResource("2_740dd")]
-position = Vector2(0, 0)
-scale = Vector2(32, 32)
-
-[node name="Area2D" type="Area2D" parent="." groups=["solid"]]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("RectangleShape2D_mirvq")
-
-[node name="guard_range" type="Area2D" parent="."]
-
-[node name="shape" type="CollisionShape2D" parent="guard_range"]
-shape = SubResource("CircleShape2D_1mf76")
-
-[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[node name="Spawner" parent="spawners" index="0" instance=ExtResource("3_kq41h")]
+unit = ExtResource("4_o7tv6")
