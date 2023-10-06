@@ -11,7 +11,7 @@ var time: float = 0
 @onready var tile_scene = load("res://tile.tscn")
 @onready var terrain = $terrain
 @onready var structure_types_weighted = {
-	0.75: {
+	0.6: {
 		'structure': load("res://structures/dungeon.tscn"),
 		'team': 'enemy'
 	},
