@@ -2,7 +2,7 @@ extends Node
 
 
 const TILE_SIZE = 32
-const STRUCTURE_MAX_GEN_CHANCE = 0.025
+const STRUCTURE_MAX_GEN_CHANCE = 0.01
 
 
 var terrain_noise = FastNoiseLite.new()
