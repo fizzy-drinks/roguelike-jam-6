@@ -8,6 +8,7 @@ enum SpawnerShopUnits {
 
 
 @onready var upgrade_menu: Control = $upgrade_menu
+@onready var spawner_shop: OptionButton = $upgrade_menu/spawner_shop
 @onready var dungeon: Structure = $dungeon
 
 
@@ -18,6 +19,9 @@ func _unhandled_input(ev: InputEvent):
 
 
 func _on_spawner_shop_item_selected(index: int):
+	spawner_shop.select(-1)
+	upgrade_menu.visible = false
+
 	var unit: Resource
 	if index == SpawnerShopUnits.GUARD:
 		unit = load('res://units/guard.tscn')
