@@ -19,6 +19,7 @@ var attack_cooldown: float = 0
 
 
 func _ready():
+	super()
 	sprite.modulate = source_structure.modulate
 	
 	
