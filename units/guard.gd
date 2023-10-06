@@ -26,12 +26,10 @@ func _process(delta):
 func _physics_process(delta):
 	super(delta)
 
-	var colliding = false
 	for collision in collisions:
-		if not collision.is_in_group("solid"):
+		if not collision.is_in_group("targetable"):
 			continue
-			
-		colliding = true
+
 		if collision.owner.team != team and attack_cooldown <= 0:
 			attack_unit(collision.owner)
 			

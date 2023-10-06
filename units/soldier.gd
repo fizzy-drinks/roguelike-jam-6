@@ -16,12 +16,10 @@ func _process(delta):
 func _physics_process(delta):
 	super(delta)
 
-	var colliding = false
 	for collision in collisions:
 		if not collision.is_in_group("solid"):
 			continue
 		
-		colliding = true
 		if collision.owner.team != team and attack_cooldown <= 0:
 			attack_unit(collision.owner)
 
@@ -30,7 +28,7 @@ func _physics_process(delta):
 
 
 func pick_target():
-	var targets = get_tree().get_nodes_in_group("targetable")
+	var targets = get_tree().get_nodes_in_group("structures")
 	
 	var nearest: Node2D
 	for t in targets:

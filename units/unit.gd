@@ -16,6 +16,7 @@ class_name Unit
 
 var collisions: Array[Area2D]
 var attack_cooldown: float = 0
+var colliding = false
 
 
 func _ready():
@@ -24,9 +25,12 @@ func _ready():
 	
 	
 func _physics_process(_delta):
+	colliding = false
 	for collision in collisions:
-		if not collision.is_in_group("solid"):
+		if not collision.is_in_group("solid") or collision.owner.team == team:
 			continue
+
+		colliding = true
 
 		var dir = (collision.global_position - global_position).normalized()
 		if dir == Vector2.ZERO:
