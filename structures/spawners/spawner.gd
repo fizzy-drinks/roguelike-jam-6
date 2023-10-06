@@ -3,6 +3,7 @@ class_name Spawner
 
 
 @export var unit: Resource
+@export var unit_type: String
 @export var spawn_rate: float = 5
 @export var team: String
 @export var source_structure: Node2D

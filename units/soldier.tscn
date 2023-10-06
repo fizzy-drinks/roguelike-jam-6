@@ -10,7 +10,6 @@ radius = 4.0
 [node name="soldier" type="Node2D" groups=["targetable", "unit"]]
 position = Vector2(25, 16)
 script = ExtResource("1_pu8gf")
-team = null
 max_ms = 16.0
 min_ms = 4.0
 dps = 7.0

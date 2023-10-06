@@ -1,4 +1,5 @@
 extends "res://units/unit.gd"
+class_name Soldier
 
 
 var target: Node2D
