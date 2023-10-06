@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bao5o7rqbu3xa"]
+
+[ext_resource type="PackedScene" uid="uid://hbfe37beu8th" path="res://units/unit.tscn" id="1_wkhev"]
+[ext_resource type="Script" path="res://units/farmer.gd" id="2_h4gjp"]
+
+[node name="farmer" instance=ExtResource("1_wkhev")]
+script = ExtResource("2_h4gjp")
+max_ms = 20.0
+min_ms = 2.0
+dps = 0.0
+max_hp = 5.0
+
+[node name="job_indicator" parent="." index="2"]
+modulate = Color(0, 1, 1, 1)

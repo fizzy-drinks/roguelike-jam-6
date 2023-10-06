@@ -9,6 +9,10 @@ const SpawnerShopUnits = {
 	1: {
 		"name": "soldier",
 		"path": 'res://units/soldier.tscn'
+	},
+	2: {
+		"name": "farmer",
+		"path": 'res://units/farmer.tscn'
 	}
 }
 
@@ -62,10 +66,8 @@ func _on_sell_item_selected(index):
 func update_spawner_list():
 	spawner_list.clear()
 	for spawner in dungeon.spawners.get_children():
-		if spawner.unit_type == 'guard':
-			spawner_list.add_item('Guard')
-		elif spawner.unit_type == 'soldier':
-			spawner_list.add_item('Soldier')
+		spawner_list.add_item(spawner.unit_type)
+
 	spawner_list.select(-1)
 
 

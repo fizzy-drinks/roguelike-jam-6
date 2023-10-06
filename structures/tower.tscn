@@ -28,11 +28,13 @@ text = "Buy"
 
 [node name="select" type="OptionButton" parent="upgrade_menu/spawner_shop"]
 layout_mode = 2
-item_count = 2
+item_count = 3
 popup/item_0/text = "+guards"
 popup/item_0/id = 0
 popup/item_1/text = "+soldiers"
 popup/item_1/id = 1
+popup/item_2/text = "+farmers"
+popup/item_2/id = 2
 
 [node name="spawner_list" type="HBoxContainer" parent="upgrade_menu"]
 layout_mode = 0

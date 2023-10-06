@@ -17,6 +17,7 @@ var collisions: Array[Area2D]
 var attack_cooldown: float = 0
 var colliding = false
 var team: String = '' : get = get_team
+var last_movement: Vector2 = Vector2(0, 0)
 
 
 func get_team():
@@ -30,7 +31,8 @@ func _ready():
 	source_structure.team_changed.connect(on_team_changed)
 	
 	
-func _physics_process(delta):	
+func _physics_process(delta):
+	last_movement = Vector2(0, 0)
 	colliding = false
 	for collision in collisions:
 		if not collision.is_in_group("solid") or collision.owner.team == team:
@@ -42,7 +44,7 @@ func _physics_process(delta):
 		if dir == Vector2.ZERO:
 			global_position += Vector2.DOWN
 			return
-			
+
 		global_position -= dir
 		
 	attack_cooldown -= delta
@@ -57,17 +59,19 @@ func _on_area_2d_area_exited(area):
 
 
 func walk_toward(point: Vector2, delta: float):
+	global_position -= last_movement
 	var walk_target_delta = point - global_position
 
 	var tile_size = Global.TILE_SIZE
 	var terrain_value = Global.get_terrain_value(round(global_position.x / tile_size), round(global_position.y / tile_size))
 	var ms_multiplier = min_ms + ((max_ms - min_ms) * terrain_value)
 	var movement = walk_target_delta.normalized() * ms_multiplier * delta
-	
+
 	if walk_target_delta.length() >= movement.length():
 		global_position += movement
-	
-	
+		last_movement = movement
+
+
 func attack_unit(unit: Damageable):
 	print('Attacking %s' % unit.team)
 	attack_cooldown = 1
@@ -76,8 +80,8 @@ func attack_unit(unit: Damageable):
 
 func set_team_color():
 	sprite.modulate = source_structure.modulate
-	
-	
+
+
 func on_team_changed():
 	print('Detected team change to ', team)
 	set_team_color()

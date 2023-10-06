@@ -5,18 +5,14 @@ class_name Soldier
 var target: Node2D
 
 
-func _process(delta):
-	super(delta)
-	
-	if not weakref(target).get_ref() or target.team == team:
-		pick_target()
-
-
 func _physics_process(delta):
 	super(delta)
 
+	if not weakref(target).get_ref() or target.team == team:
+		pick_target()
+
 	for collision in collisions:
-		if not collision.owner.is_in_group("targetable"):
+		if not collision.owner.is_in_group("targetable") or not collision.is_in_group("solid"):
 			continue
 		
 		if collision.owner.team != team and attack_cooldown <= 0:
@@ -42,8 +38,8 @@ func pick_target():
 			nearest = t
 	
 	target = nearest
-		
-		
+
+
 func on_team_changed():
 	super()
 	
