@@ -17,7 +17,7 @@ func _physics_process(delta):
 	super(delta)
 
 	for collision in collisions:
-		if not collision.is_in_group("solid"):
+		if not collision.owner.is_in_group("targetable"):
 			continue
 		
 		if collision.owner.team != team and attack_cooldown <= 0:

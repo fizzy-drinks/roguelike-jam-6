@@ -24,10 +24,10 @@ func _ready():
 	sprite.modulate = source_structure.modulate
 	
 	
-func _physics_process(_delta):
+func _physics_process(delta):
 	colliding = false
 	for collision in collisions:
-		if not collision.is_in_group("solid") or collision.owner.team == team:
+		if not collision.owner.is_in_group("solid") or collision.owner.team == team:
 			continue
 
 		colliding = true
@@ -38,6 +38,8 @@ func _physics_process(_delta):
 			return
 			
 		global_position -= dir
+		
+	attack_cooldown -= delta
 
 
 func _on_area_2d_area_entered(area: Area2D):
@@ -62,4 +64,4 @@ func walk_toward(point: Vector2, delta: float):
 	
 func attack_unit(unit: Damageable):
 	attack_cooldown = 1
-	unit.damage(dps)
+	unit.damage(dps, self)

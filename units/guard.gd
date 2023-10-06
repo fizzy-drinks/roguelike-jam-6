@@ -27,23 +27,22 @@ func _physics_process(delta):
 	super(delta)
 
 	for collision in collisions:
-		if not collision.is_in_group("targetable"):
+		if not collision.owner.is_in_group("targetable"):
 			continue
 
 		if collision.owner.team != team and attack_cooldown <= 0:
 			attack_unit(collision.owner)
-			
-		pick_walk_target()
 	
 	for target in targets:
 		if weakref(target).get_ref() and not colliding:
 			walk_toward(target.position, delta)
 			return
 
+	if walk_target_interest <= 0:
+		pick_walk_target()
+
 	if walk_target and not colliding:
 		walk_target_interest -= delta
-		if walk_target_interest <= 0:
-			pick_walk_target()
 		
 		walk_toward(walk_target, delta)
 
