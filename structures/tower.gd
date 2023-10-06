@@ -24,9 +24,11 @@ func _ready():
 
 
 func _unhandled_input(ev: InputEvent):
-	if ev is InputEventMouseButton and ev.is_pressed():
-		var is_within_sprite = (get_global_mouse_position() - global_position).length() < Global.TILE_SIZE
-		upgrade_menu.visible = ev.button_index == MouseButton.MOUSE_BUTTON_RIGHT and is_within_sprite
+	if not (ev is InputEventMouseButton) or not ev.is_pressed():
+		return
+
+	var is_within_sprite = (get_global_mouse_position() - global_position).length() < Global.TILE_SIZE
+	upgrade_menu.visible = ev.button_index == MouseButton.MOUSE_BUTTON_RIGHT and is_within_sprite
 
 
 func _on_spawner_shop_item_selected(index: int):
@@ -66,7 +68,7 @@ func update_spawner_list():
 		elif spawner.unit_type == 'soldier':
 			spawner_list.add_item('Soldier')
 	spawner_list.select(-1)
-	
-	
+
+
 func close_menu():
 	upgrade_menu.visible = false

@@ -7,7 +7,7 @@
 size = Vector2(34, 34)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1mf76"]
-radius = 61.0082
+radius = 41.0122
 
 [node name="structure" type="Node2D" groups=["structures", "targetable"]]
 modulate = Color(0.439216, 0.137255, 0.0588235, 1)
