@@ -7,9 +7,8 @@ var target: Node2D
 
 func _process(delta):
 	super(delta)
-	attack_cooldown -= delta
 	
-	if not weakref(target).get_ref():
+	if not weakref(target).get_ref() or target.team == team:
 		pick_target()
 
 
@@ -43,3 +42,9 @@ func pick_target():
 			nearest = t
 	
 	target = nearest
+		
+		
+func on_team_changed():
+	super()
+	
+	pick_target()

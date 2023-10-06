@@ -47,7 +47,6 @@ func _on_spawner_shop_item_selected(index: int):
 	spawner.unit = unit
 	spawner.unit_type = unit_type
 	spawner.source_structure = dungeon
-	spawner.team = 'player'
 	dungeon.spawners.add_child(spawner)
 	update_spawner_list()
 

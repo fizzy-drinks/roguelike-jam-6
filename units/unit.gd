@@ -2,8 +2,7 @@ extends "res://damageable.gd"
 class_name Unit
 
 
-@export var team: String
-@export var source_structure: Node2D
+@export var source_structure: Structure
 @export var max_ms: float
 @export var min_ms: float
 @export var dps: float
@@ -17,17 +16,24 @@ class_name Unit
 var collisions: Array[Area2D]
 var attack_cooldown: float = 0
 var colliding = false
+var team: String = '' : get = get_team
+
+
+func get_team():
+	return source_structure.team
 
 
 func _ready():
 	super()
-	sprite.modulate = source_structure.modulate
+	
+	set_team_color()
+	source_structure.team_changed.connect(on_team_changed)
 	
 	
-func _physics_process(delta):
+func _physics_process(delta):	
 	colliding = false
 	for collision in collisions:
-		if not collision.owner.is_in_group("solid") or collision.owner.team == team:
+		if not collision.is_in_group("solid") or collision.owner.team == team:
 			continue
 
 		colliding = true
@@ -63,5 +69,15 @@ func walk_toward(point: Vector2, delta: float):
 	
 	
 func attack_unit(unit: Damageable):
+	print('Attacking %s' % unit.team)
 	attack_cooldown = 1
 	unit.damage(dps, self)
+
+
+func set_team_color():
+	sprite.modulate = source_structure.modulate
+	
+	
+func on_team_changed():
+	print('Detected team change to ', team)
+	set_team_color()

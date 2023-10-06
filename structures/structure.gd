@@ -2,6 +2,9 @@ extends "res://damageable.gd"
 class_name Structure
 
 
+signal team_changed
+
+
 @export var team: String
 
 
@@ -17,7 +20,7 @@ func _ready():
 
 func _on_area_2d_area_entered(area: Area2D):
 	if "team" in area.owner and area.owner.is_in_group("unit") and area.owner.team != team:
-		area.owner.damage(100)
+		area.owner.damage(100, self)
 
 
 func _on_spawners_child_entered_tree(node):
@@ -26,4 +29,11 @@ func _on_spawners_child_entered_tree(node):
 
 func setup_spawner(spawner: Node2D):
 	spawner.source_structure = self
-	spawner.team = team
+	
+	
+func on_hp_depleted():
+	hp = max_hp
+	team = last_hit.team
+	print(self, " changed teams! It is now ", team)
+	modulate = last_hit.source_structure.modulate
+	team_changed.emit()

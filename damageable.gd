@@ -2,6 +2,9 @@ extends Node2D
 class_name Damageable
 
 
+signal hp_depleted
+
+
 @export var max_hp: float = 5
 
 
@@ -9,13 +12,14 @@ class_name Damageable
 
 
 var hp: float = max_hp
+var last_hit: Node2D
 
 
 func _ready():
 	hp = max_hp
 
 
-func damage(value: float):
+func damage(value: float, from: Node2D):
 	print(self, " taking ", value, " damage")
 	var t: RichTextLabel = label.instantiate()
 	get_tree().current_scene.add_child(t)
@@ -23,8 +27,14 @@ func damage(value: float):
 	t.add_text(str(value))
 	t.global_position = global_position
 	hp -= value
+	last_hit = from
 
 
 func _process(_delta):
 	if hp <= 0:
-		queue_free()
+		hp_depleted.emit()
+		on_hp_depleted()
+
+
+func on_hp_depleted():
+	queue_free()

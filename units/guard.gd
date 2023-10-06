@@ -61,6 +61,13 @@ func pick_walk_target():
 	walk_target_interest = 5
 	
 
-func target_enemies(area: Area2D):	
+func target_enemies(area: Area2D):
 	if area.owner is Unit and area.owner.team != team:
 		targets.append(area.owner)
+		
+		
+func on_team_changed():
+	super()
+	
+	pick_walk_target()
+	targets = targets.filter(func (t): return weakref(t).get_ref() and t.team != team)
